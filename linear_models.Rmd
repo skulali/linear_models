@@ -114,6 +114,17 @@ nyc_airbnb |>
   geom_point()
 ```
 
+now with a qq plot
+
+```{r}
+nyc_airbnb |> 
+  modelr::add_residuals(fit) |> 
+  ggplot(aes(sample = resid)) +
+  stat_qq() +
+  stat_qq_line()
+```
+
+
 ## Hypothesis test fir categorical predictor
 
 fit a "null" and "alternative" model
@@ -213,5 +224,3 @@ fit_logistic |>
 baltimore_df |> 
   count(victim_race)
 ```
-
-

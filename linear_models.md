@@ -224,6 +224,22 @@ nyc_airbnb |>
 
 <img src="linear_models_files/figure-gfm/unnamed-chunk-7-3.png" width="90%" />
 
+now with a qq plot
+
+``` r
+nyc_airbnb |> 
+  modelr::add_residuals(fit) |> 
+  ggplot(aes(sample = resid)) +
+  stat_qq() +
+  stat_qq_line()
+```
+
+    ## Warning: Removed 9962 rows containing non-finite values (`stat_qq()`).
+
+    ## Warning: Removed 9962 rows containing non-finite values (`stat_qq_line()`).
+
+<img src="linear_models_files/figure-gfm/unnamed-chunk-8-1.png" width="90%" />
+
 ## Hypothesis test fir categorical predictor
 
 fit a “null” and “alternative” model
