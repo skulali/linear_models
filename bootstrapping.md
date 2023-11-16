@@ -98,3 +98,29 @@ sim_df_nonconst |>
     ##   <chr>          <dbl>     <dbl>     <dbl>     <dbl>
     ## 1 (Intercept)     1.93    0.105       18.5 1.88e- 48
     ## 2 x               3.11    0.0747      41.7 5.76e-114
+
+## Draw and analyze a bootstrap sample
+
+start with a lil function
+
+``` r
+boot_sample = function(df) {
+  
+  sample_frac(df, replace = T)
+  
+}
+```
+
+let’s see how this works
+
+``` r
+sim_df_nonconst |> 
+  boot_sample() |> 
+  ggplot(aes(x = x, y = y)) +
+  geom_point(alpha = 0.5) +
+  stat_smooth(method = "lm")
+```
+
+    ## `geom_smooth()` using formula = 'y ~ x'
+
+<img src="bootstrapping_files/figure-gfm/unnamed-chunk-4-1.png" width="90%" />
